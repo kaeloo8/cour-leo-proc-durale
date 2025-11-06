@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Noiseblock
   m_EditorClassIdentifier: 
   _maxSteps: 1000
-  _accentuation_denivler: 2
+  _accentuation_denivler: 8
   _prefab: {fileID: 2487062154611430380, guid: 342ec10bed3ce4e40aa2a16828c88f0e, type: 3}
   _nois_type: 0
   _rota_3d: 0
