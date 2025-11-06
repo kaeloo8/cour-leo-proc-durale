@@ -5,23 +5,29 @@ using UnityEngine;
 using VTools.Grid;
 using VTools.ScriptableObjectDatabase;
 using VTools.Grid;
+using System;
 
 namespace VTools.RandomService
 {
     [CreateAssetMenu(menuName = "Procedural Generation Method/celular automata")]
     public class celargenerator : ProceduralGenerationMethod
     {
-        [SerializeField] private int _density = 50;
+        [NonSerialized] private int _density = 50;
+        [NonSerialized] private int _Affinage = 5;
+
         [SerializeField] private int _plus_de_x_to_ground = 4;
         [SerializeField] private int _moins_de_x_to_water = 2;
         [SerializeField] private int _to_sand = 7;
         protected override async UniTask ApplyGeneration(CancellationToken cancellationToken)
         {
-            //cancellationToken.ThrowIfCancellationRequested();
+            cancellationToken.ThrowIfCancellationRequested();
+            for (int x = 0; x < Grid.Width; x++)
+            {
+                Nois_Generate(x);
+                await UniTask.Delay(GridGenerator.StepDelay, cancellationToken: cancellationToken);
+            }
 
-            Nois_Generate();
-
-            for (int i = 0; i < _maxSteps; i++)
+            for (int i = 0; i < _Affinage; i++)
             {
                 Affinage();
                 await UniTask.Delay(GridGenerator.StepDelay, cancellationToken: cancellationToken);
@@ -29,10 +35,8 @@ namespace VTools.RandomService
 
         }
 
-        private void Nois_Generate()
+        private void Nois_Generate(int x)
         {
-            for (int x = 0; x < Grid.Width; x++)
-            {
                 for (int y = 0; y < Grid.Lenght; y++)
                 {
                     if (!Grid.TryGetCellByCoordinates(x, y, out var cell))
@@ -43,9 +47,7 @@ namespace VTools.RandomService
                         AddTileToCell(cell, GRASS_TILE_NAME, true);
                     else
                         AddTileToCell(cell, WATER_TILE_NAME, true);
-
                 }
-            }
         }
 
         public void Affinage()
@@ -71,7 +73,7 @@ namespace VTools.RandomService
                             if (!Grid.TryGetCellByCoordinates(posX, posY, out var verif_cell))
                                 continue;
 
-                            if (verif_cell.GridObject.Template.Name == GRASS_TILE_NAME || verif_cell.GridObject.Template.Name == SAND_TILE_NAME)
+                            if (verif_cell.GridObject.Template.Name == GRASS_TILE_NAME)
                                 ground_count++;
                         }
                     }
@@ -82,12 +84,6 @@ namespace VTools.RandomService
                             AddTileToCell(currentCell, GRASS_TILE_NAME, true);
                         else if (ground_count < _moins_de_x_to_water)
                             AddTileToCell(currentCell, WATER_TILE_NAME, true);
-
-                        if (currentCell.GridObject.Template.name == GRASS_TILE_NAME && ground_count < _to_sand && ground_count >= _moins_de_x_to_water)
-                            AddTileToCell(currentCell, SAND_TILE_NAME, true);
-                        else if (currentCell.GridObject.Template.name == GRASS_TILE_NAME || currentCell.GridObject.Template.Name == SAND_TILE_NAME)
-                            AddTileToCell(currentCell, GRASS_TILE_NAME, true);
-
                     }
                 }
             }

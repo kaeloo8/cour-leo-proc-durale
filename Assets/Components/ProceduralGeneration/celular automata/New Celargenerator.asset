@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: New Celargenerator
   m_EditorClassIdentifier: 
   _maxSteps: 10
-  _density: 40
   _plus_de_x_to_ground: 4
   _moins_de_x_to_water: 3
-  _to_sand: 7
+  _to_sand: 9
