@@ -39,7 +39,6 @@ namespace VTools.RandomService
         [SerializeField] FastNoiseLite.CellularReturnType _return_type = FastNoiseLite.CellularReturnType.Distance;
         [SerializeField] float _jiter = 1.0f;
 
-        [SerializeField] Vertex[] _vertices_list;
         [SerializeField] public Gradient _gradient = new();
 
 
@@ -87,7 +86,7 @@ namespace VTools.RandomService
             {
                 for (int y = 0; y < Grid.Lenght; y++)
                 {
-                    noiseData[x, y] = noise.GetNoise(x, y);
+                    noiseData[x, y] = (noise.GetNoise(x, y) + 1) / 2.0f;
                 }
             }
         }
