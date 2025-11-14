@@ -100,6 +100,7 @@ namespace VTools.RandomService
 
         private void Reorganise()
         {
+            Debug.Log(Grid.Width);
             for (int x = 0; x < Grid.Width; x++)
             {
                 for (int y = 0; y < Grid.Lenght; y++)
