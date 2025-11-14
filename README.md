@@ -28,14 +28,12 @@ Apres une limite de tentative échoué on arrête pour éviter de crée boucle i
 
 C’est une méthode utile pour générer des zones aléatoires dispersées sans forcément les placer proche les unes des autres.
 
-
-![Sans titre (1)](https://github.com/user-attachments/assets/5f7edf57-f07b-46bd-8215-9c198c9228c8)
-![Sans titre (2)](https://github.com/user-attachments/assets/9aa49864-3b1a-4dbc-b73f-dbc146f73a8c)
-![Sans titre (3)](https://github.com/user-attachments/assets/0f09c92a-48f2-4440-a107-7e8dcab333bc)
-![Sans titre (4)](https://github.com/user-attachments/assets/24c26ca4-5035-4d5b-a746-dd7b050aee8e)
-![Sans titre (5)](https://github.com/user-attachments/assets/876a6e14-0562-486f-9d79-9a4fa038790a)
-![Sans titre (5)](https://github.com/user-attachments/assets/e31952a7-6494-45ec-8f90-50188cdd7104)
-![Sans titre (6)](https://github.com/user-attachments/assets/18217686-9417-414b-b71a-abdd691b8f39)
+<p align="center">
+  <img src="" width="350" title="hover text">
+  <img src="" width="350" title="hover text">
+  <img src="" width="350" title="hover text">
+  <img src="" width="350" title="hover text">
+</p>
 
 
 
